@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.ff-poppins{
+    font-family: 'Poppins', sans-serif;
+}
+.category:hover{
+    background-color: #ff9225 !important;
+    transform: scale(1.1);
+    transition: 0.5s;
+    color: white;
+}
+
+.course:hover{
+    border: 1px solid #28a745 !important;
+    transition: 0.4s;
+}

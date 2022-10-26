@@ -3,13 +3,12 @@ import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import DayNightToggle from "react-day-and-night-toggle";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import Logo from "../../../asset/images/logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import { FaCode, FaKey, FaLockOpen, FaRegEdit } from "react-icons/fa";
+import { FaCode, FaKey, FaRegEdit } from "react-icons/fa";
 
 const Header = () => {
   const { isDarkMode, handleModeToggole } = useContext(AuthContext);
