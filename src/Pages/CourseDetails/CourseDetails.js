@@ -82,7 +82,7 @@ const CourseDetails = () => {
                   <p className="m-0 fw-bold">{instructor.name}</p>
                 </div>
               </div>
-              <div className="col-6 text-center">
+              <div className="col-6 text-end align-items-center">
                 <span className="funta-bg-light px-3 mx-1 py-2 rounded-pill text-light">
                   Price ${price}
                 </span>
