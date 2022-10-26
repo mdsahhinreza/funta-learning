@@ -3,13 +3,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
     <Container className="" style={{ minHeight: "85vh" }}>
       <Row>
         <Col
-          md="5"
+          md="4"
           className="mx-auto my-5 border border-warning rounded text-start py-4"
         >
           <h3 className="text-center">Login</h3>
@@ -27,14 +28,14 @@ const Login = () => {
               <Form.Control type="password" placeholder="Password" />
             </Form.Group>
             <div className="text-center">
-              <Button variant="primary" type="submit">
+              <Button variant="outline-primary" type="submit" className="w-100">
                 Submit
-              </Button>
-              <Button variant="danger" className="ms-2" type="reset">
-                Reset
               </Button>
             </div>
           </Form>
+          <p className="my-2">
+            New At Funta Learning? Please <Link to="/register">Register</Link>
+          </p>
           <div className="mt-2">
             <button className="btn btn-outline-primary w-100">
               <FaGoogle /> Continue with Google

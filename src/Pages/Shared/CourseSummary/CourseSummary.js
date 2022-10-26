@@ -1,10 +1,27 @@
 import React from "react";
-import { Image } from "react-bootstrap";
+import { Button, ButtonGroup, Image } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import { FaCalendar, FaThumbsUp } from "react-icons/fa";
+import {
+  FaCartPlus,
+  FaDollarSign,
+  FaEye,
+  FaStar,
+  FaUserGraduate,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const CourseSummary = ({ course }) => {
-  const { course_name, full_img, instructor } = course;
+  const {
+    course_id,
+    course_name,
+    full_img,
+    instructor,
+    details,
+    category_name,
+    price,
+    enrolled,
+    ratings,
+  } = course;
   return (
     <div>
       <Card className="course" style={{ minHeight: "465px" }}>
@@ -16,7 +33,7 @@ const CourseSummary = ({ course }) => {
             <div className="col-2 p-0">
               <Image
                 className="border border-success"
-                style={{ height: "40px" }}
+                style={{ height: "40px", width: "40px" }}
                 roundedCircle
                 src={instructor.photo}
               ></Image>
@@ -26,7 +43,7 @@ const CourseSummary = ({ course }) => {
             </div>
             <div className="col-3 p-0">
               <small className="p-2 text-dark funta-bg-light-50 rounded">
-                Tailwind
+                {category_name}
               </small>
             </div>
           </div>
@@ -36,18 +53,38 @@ const CourseSummary = ({ course }) => {
           >
             {course_name}
           </Card.Title>
+          <Card.Text className="text-start">
+            {details.length > 200 ? details.slice(0, 220) + "..." : details}
+          </Card.Text>
           <div className="d-flex">
-            <button className="btn btn-outline-success">Details</button>
+            <ButtonGroup className="w-100" aria-label="Basic example">
+              <Button
+                variant="outline-info"
+                as={Link}
+                to={`/course-details/${course_id}`}
+              >
+                <FaEye /> Details
+              </Button>
+              <Button variant="outline-primary">
+                <FaCartPlus /> Enroll
+              </Button>
+            </ButtonGroup>
           </div>
           <div className="d-flex justify-content-between mt-4">
             <div className="release funta-bg-light-50 p-2 rounded">
               <small className="mb-0 text-dark">
-                <FaCalendar></FaCalendar> 12-10-2022
+                <FaDollarSign />
+                {price}
               </small>
             </div>
             <div className="fevorate funta-bg-light-50 p-2 rounded">
               <small className="mb-0 text-dark">
-                <FaThumbsUp></FaThumbsUp> 2304+
+                <FaStar /> {ratings.rating} ({ratings.rated})
+              </small>
+            </div>
+            <div className="fevorate funta-bg-light-50 p-2 rounded">
+              <small className="mb-0 text-dark">
+                <FaUserGraduate /> {enrolled}
               </small>
             </div>
           </div>

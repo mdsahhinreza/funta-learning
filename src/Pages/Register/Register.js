@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -61,6 +62,10 @@ const Register = () => {
               </Button>
             </div>
           </Form>
+          <p className="my-2">
+            Already Member Of Funta Learning? Please{" "}
+            <Link to="/login">Login</Link>
+          </p>
           <div className="mt-2">
             <button className="btn btn-outline-primary w-100">
               <FaGoogle /> Continue with Google

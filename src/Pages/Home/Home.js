@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import Banner from "../../asset/images/banner.png";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
-import { FaArrowDown, FaReact } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
