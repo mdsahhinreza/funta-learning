@@ -1,15 +1,35 @@
-# Getting Started with Create React App
+# Funta Learning
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Website Link:
+
+Runs the app in the Live mode.\
+Open [https://funta-learning.web.app/](Open [https://funta-learning.web.app/](https://hero-learning-45b88.web.app) to view it in your browser.
+) to view it in your browser.
+
+## Technologys:
+
+    1. Java Script
+    2. React
+    3. HTML 5
+    4. CSS 3
+    5. Bootstrap 5
+    etc...
+
+## Course Category:
+
+    1. Java Script
+    2. React
+    3. HTML 5
+    4. CSS 3
+    5. Bootstrap 5
+    6. Tailwind CSS
+    7. Git Hub
 
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
