@@ -66,7 +66,7 @@ const Home = () => {
               {categories.map((cat) => (
                 <div
                   key={cat.category_id}
-                  className="col-1 funta-bg-light-50 rounded category"
+                  className="col-1 col-md-1 col-3 funta-bg-light-50 rounded category"
                 >
                   <Image
                     src={cat.icon}

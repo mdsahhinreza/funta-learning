@@ -17,7 +17,6 @@ const Register = () => {
     setUser,
     logOut,
     logIn,
-    sendEmailVarifiacation,
   } = useContext(AuthContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [error, setError] = useState(null);

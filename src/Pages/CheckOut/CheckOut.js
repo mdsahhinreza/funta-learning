@@ -2,7 +2,6 @@ import React from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaStar, FaUserGraduate } from "react-icons/fa";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";

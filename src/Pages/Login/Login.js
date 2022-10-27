@@ -42,7 +42,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        navigate("/courses");
+        navigate(from, { replace: true });
       })
       .catch((error) => setError(error.message));
   };
@@ -53,7 +53,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        navigate("/courses");
+        navigate(from, { replace: true });
       })
       .catch((error) => setError(error.message));
   };

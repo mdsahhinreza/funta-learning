@@ -3,13 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
-import {
-  FaCartPlus,
-  FaCrown,
-  FaDownload,
-  FaStar,
-  FaUserGraduate,
-} from "react-icons/fa";
+import { FaCrown, FaDownload, FaStar, FaUserGraduate } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
