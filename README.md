@@ -3,7 +3,7 @@
 ## Live Website Link:
 
 Runs the app in the Live mode.\
-Open https://funta-learning.web.app/]  to view it in your browser.
+Open https://funta-learning.web.app to view it in your browser.
 ) to view it in your browser.
 
 ## Technologys:
