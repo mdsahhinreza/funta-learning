@@ -65,8 +65,12 @@ const CourseSummary = ({ course }) => {
               >
                 <FaEye /> Details
               </Button>
-              <Button variant="outline-primary">
-                <FaCartPlus /> Enroll
+              <Button
+                variant="outline-primary"
+                as={Link}
+                to={`/course-checkout/${course_id}`}
+              >
+                <FaCartPlus /> Check Out
               </Button>
             </ButtonGroup>
           </div>

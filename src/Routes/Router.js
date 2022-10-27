@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main/Main";
+import CheckOut from "../Pages/CheckOut/CheckOut";
 import Courses from "../Pages/Course/Courses";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 import Register from "../Pages/Register/Register";
+import PrivetRoute from "./PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +16,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <Home></Home>,
+        loader: () => fetch("https://funta-learning-server.vercel.app/courses"),
+      },
+      {
+        path: "/home",
         element: <Home></Home>,
         loader: () => fetch("https://funta-learning-server.vercel.app/courses"),
       },
@@ -33,6 +40,18 @@ export const router = createBrowserRouter([
       {
         path: "course-details/:id",
         element: <CourseDetails></CourseDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://funta-learning-server.vercel.app/courses/${params.id}`
+          ),
+      },
+      {
+        path: "course-checkout/:id",
+        element: (
+          <PrivetRoute>
+            <CheckOut></CheckOut>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://funta-learning-server.vercel.app/courses/${params.id}`

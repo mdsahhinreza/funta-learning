@@ -13,3 +13,22 @@
 .light-dark {
     background-color: #555555;
 }
+
+.funta-btn-outline {
+    border: 1px solid #e77200;
+    color: #e77200;
+    padding: 7px 12px;
+    border-radius: 6px;
+    background: #e7720026;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.funta-btn-outline:hover {
+    background-color: #e77200;
+    color: #fff;
+}
+
+.dark-body{
+    background: #bfbfbf;
+}

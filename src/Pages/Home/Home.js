@@ -29,7 +29,7 @@ const Home = () => {
   const courses = useLoaderData();
   const { isDarkMode } = useContext(AuthContext);
   return (
-    <div>
+    <div className={isDarkMode ? "dark-body" : ""}>
       <div className={isDarkMode ? "light-dark" : "funta-bg-light"}>
         <Container>
           <Row className="py-5">
@@ -80,7 +80,7 @@ const Home = () => {
             </div>
           </div>
         </>
-        <Row className="my-5">
+        <Row className="py-5">
           <h3 className="mt-4">Most Populer Courses!</h3>
           <hr className="my-0 mx-auto p-0 w-25" />
           <Swiper

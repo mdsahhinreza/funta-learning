@@ -8,10 +8,26 @@ import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import Logo from "../../../asset/images/logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import { FaCode, FaKey, FaRegEdit } from "react-icons/fa";
+import { FaCode, FaKey, FaRegEdit, FaSignOutAlt } from "react-icons/fa";
+import { Image } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const Header = () => {
-  const { isDarkMode, handleModeToggole } = useContext(AuthContext);
+  const { isDarkMode, handleModeToggole, user, logOut } =
+    useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => console.log("LogOut Success"))
+      .catch((error) => console.error(error.message));
+  };
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      {user.displayName}
+    </Tooltip>
+  );
+
   return (
     <Navbar
       collapseOnSelect
@@ -31,19 +47,44 @@ const Header = () => {
               <FaCode /> Courses
             </Nav.Link>
           </Nav>
-          <Nav>
-            <Nav.Link as={Link} to="/register">
-              <FaRegEdit></FaRegEdit> Register
-            </Nav.Link>
-            <Nav.Link as={Link} to="/login">
-              <FaKey /> Login
-            </Nav.Link>
+          <Nav className="d-flex align-items-center align-self-center">
+            {user ? (
+              <>
+                <Nav.Link onClick={handleLogOut}>
+                  <FaSignOutAlt /> Log Out
+                </Nav.Link>
+                <OverlayTrigger
+                  placement="bottom"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={renderTooltip}
+                >
+                  <Image
+                    className="border border-success me-2"
+                    style={{ height: "40px", width: "40px" }}
+                    roundedCircle
+                    src={user?.photoURL}
+                  ></Image>
+                </OverlayTrigger>
+              </>
+            ) : (
+              <>
+                <Nav.Link as={Link} to="/register">
+                  <FaRegEdit></FaRegEdit> Register
+                </Nav.Link>
+                <Nav.Link as={Link} to="/login">
+                  <FaKey /> Login
+                </Nav.Link>
+              </>
+            )}
+
             <Nav.Link>
               <DayNightToggle
                 onChange={handleModeToggole}
                 checked={isDarkMode}
               />
             </Nav.Link>
+
+            <Nav.Link></Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

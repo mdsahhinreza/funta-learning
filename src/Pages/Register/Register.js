@@ -4,16 +4,49 @@ import Form from "react-bootstrap/Form";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const {
+    createUser,
+    updateUser,
+    createUserWithSocial,
+    setUser,
+    logOut,
+    logIn,
+    sendEmailVarifiacation,
+  } = useContext(AuthContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const navigate = useNavigate();
   const handleAccepted = (event) => {
     setAcceptTerms(event.target.checked);
+  };
+
+  const handleGoogleSignIn = () => {
+    const googleProvider = new GoogleAuthProvider();
+    createUserWithSocial(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate("/courses");
+      })
+      .catch((error) => setError(error.message));
+  };
+
+  const handleGitHubSignIn = () => {
+    const gitProvider = new GithubAuthProvider();
+    createUserWithSocial(gitProvider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate("/courses");
+      })
+      .catch((error) => setError(error.message));
   };
 
   const handleRegistration = (event) => {
@@ -25,12 +58,30 @@ const Register = () => {
     const password = form.password.value;
     const confirmPassword = form.confirmPass.value;
 
-    console.log(fullname, photurl, email, password, confirmPassword);
+    if (password.length < 6) {
+      setError("Password Must be At last 6 Digit! ");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Password Confirm Does not match!");
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+
+        updateUser(fullname, photurl)
+          .then(() => console.log("Profile Update Success"))
+          .catch((error) => setError(error.message));
+
+        logOut();
+        logIn(email, password);
+        sendEmailVarifiacation().then(() => {});
         form.reset();
+
+        navigate("/courses");
       })
       .catch((error) => setError(error.message));
   };
@@ -96,7 +147,12 @@ const Register = () => {
                 label="Accept Terms and Conditions"
               />
             </Form.Group>
-            <p>{error ? error : ""}</p>
+            <p className={success ? "alert alert-success" : ""}>
+              {success ? success : ""}
+            </p>
+            <p className={error ? "alert alert-danger" : ""}>
+              {error ? error : ""}
+            </p>
             <div className="text-center">
               <Button variant="primary" type="submit" disabled={!acceptTerms}>
                 Submit
@@ -111,10 +167,16 @@ const Register = () => {
             <Link to="/login">Login</Link>
           </p>
           <div className="mt-2">
-            <button className="btn btn-outline-primary w-100">
+            <button
+              className="btn btn-outline-primary w-100"
+              onClick={handleGoogleSignIn}
+            >
               <FaGoogle /> Continue with Google
             </button>
-            <button className="btn btn-outline-dark w-100 mt-2">
+            <button
+              className="btn btn-outline-dark w-100 mt-2"
+              onClick={handleGitHubSignIn}
+            >
               <FaGithub /> Continue with GitHub
             </button>
           </div>

@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCLWV_3jkG4vHBHYmI52CU9bTIziQOHZ3I",
-  authDomain: "funta-learning.firebaseapp.com",
-  projectId: "funta-learning",
-  storageBucket: "funta-learning.appspot.com",
-  messagingSenderId: "475702395806",
-  appId: "1:475702395806:web:12a27160f265c2a53b4c8f",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase

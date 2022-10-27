@@ -1,19 +1,16 @@
 import React from "react";
 import { useState } from "react";
+import { useContext } from "react";
 import { useEffect } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
-import {
-  FaCartPlus,
-  FaDownload,
-  FaLayerGroup,
-  FaStar,
-  FaUserGraduate,
-} from "react-icons/fa";
+import { FaCartPlus, FaDownload, FaStar, FaUserGraduate } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const CourseDetails = () => {
   const course = useLoaderData();
   const {
+    course_id,
     course_name,
     full_img,
     instructor,
@@ -24,23 +21,35 @@ const CourseDetails = () => {
     ratings,
   } = course;
   const [categories, setCategories] = useState([]);
+  const { isDarkMode } = useContext(AuthContext);
   useEffect(() => {
     fetch("https://funta-learning-server.vercel.app/course-categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
   return (
-    <div style={{ minHeight: "85vh" }}>
-      <Container className="my-3">
+    <div
+      className={isDarkMode ? "dark-body" : ""}
+      style={{ minHeight: "85vh" }}
+    >
+      <Container className="py-3">
         <Row>
           <Col md="4">
             <div className="sticky-top">
               <h2 className="my-2">Course Category</h2> <hr />
-              <div className="text-start border p-4 border-warning">
+              <div
+                className={`text-start border p-4 ${
+                  isDarkMode ? "border-dark" : "border-warning"
+                }`}
+              >
                 {categories.map((cat) => (
                   <div key={cat.category_id}>
                     <Link
-                      className="btn btn-outline-warning w-100 mb-3"
+                      className={`btn w-100 mb-3 ${
+                        isDarkMode
+                          ? "btn-outline-dark "
+                          : "btn-outline-warning "
+                      }`}
                       to={`/category/${cat.category_id}`}
                     >
                       <b>{cat.category_name}</b>
@@ -102,8 +111,13 @@ const CourseDetails = () => {
               <p className="text-start">{details}</p>
             </div>
             <div className="my-5">
-              <Link className="btn btn-lg btn-outline-success">
-                <FaCartPlus /> Enroll This Course
+              <Link
+                className={` btn-lg ${
+                  isDarkMode ? "btn btn-outline-dark" : "funta-btn-outline"
+                }`}
+                to={`/course-checkout/${course_id}`}
+              >
+                <FaCartPlus /> Check Out This Course
               </Link>
             </div>
           </Col>
