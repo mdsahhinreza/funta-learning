@@ -70,7 +70,7 @@ const Home = () => {
                 >
                   <Image
                     src={cat.icon}
-                    width={80}
+                    width={70}
                     className="display-3 p-3 funta-bg bg-opacity-50 rounded-5 mt-2"
                   ></Image>
 
