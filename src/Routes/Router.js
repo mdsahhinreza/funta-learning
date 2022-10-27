@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main/Main";
+import Blog from "../Pages/Blog/Blog";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import Courses from "../Pages/Course/Courses";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
+import FAQ from "../Pages/FAQ/FAQ";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
@@ -56,6 +58,14 @@ export const router = createBrowserRouter([
           fetch(
             `https://funta-learning-server.vercel.app/courses/${params.id}`
           ),
+      },
+      {
+        path: "faq",
+        element: <FAQ></FAQ>,
+      },
+      {
+        path: "blog",
+        element: <Blog></Blog>,
       },
       {
         path: "login",

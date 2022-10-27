@@ -70,7 +70,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        setUser(user);
 
         updateUser(fullname, photurl)
           .then(() => console.log("Profile Update Success"))
@@ -78,12 +78,14 @@ const Register = () => {
 
         logOut();
         logIn(email, password);
-        sendEmailVarifiacation().then(() => {});
-        form.reset();
+        setSuccess("Registration Successfull! ");
 
-        navigate("/courses");
+        form.reset();
       })
-      .catch((error) => setError(error.message));
+      .catch((error) => {
+        setError(error.message);
+        console.error(error);
+      });
   };
   return (
     <Container className="" style={{ minHeight: "85vh" }}>

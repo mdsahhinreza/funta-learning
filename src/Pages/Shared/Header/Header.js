@@ -8,7 +8,15 @@ import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import Logo from "../../../asset/images/logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import { FaCode, FaKey, FaRegEdit, FaSignOutAlt } from "react-icons/fa";
+import {
+  FaCode,
+  FaKey,
+  FaPaste,
+  FaQq,
+  FaQuestion,
+  FaRegEdit,
+  FaSignOutAlt,
+} from "react-icons/fa";
 import { Image } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -45,6 +53,12 @@ const Header = () => {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="courses">
               <FaCode /> Courses
+            </Nav.Link>
+            <Nav.Link as={Link} to="/faq">
+              <FaQuestion /> FAQ
+            </Nav.Link>
+            <Nav.Link as={Link} to="/blog">
+              <FaPaste /> Blog
             </Nav.Link>
           </Nav>
           <Nav className="d-flex align-items-center align-self-center">
