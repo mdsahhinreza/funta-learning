@@ -17,6 +17,7 @@ const Register = () => {
     setUser,
     logOut,
     logIn,
+    emailVarifiacation,
   } = useContext(AuthContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [error, setError] = useState(null);
@@ -74,6 +75,8 @@ const Register = () => {
         updateUser(fullname, photurl)
           .then(() => console.log("Profile Update Success"))
           .catch((error) => setError(error.message));
+
+        emailVarifiacation();
 
         logOut();
         logIn(email, password);

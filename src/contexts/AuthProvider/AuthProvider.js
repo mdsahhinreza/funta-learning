@@ -7,6 +7,8 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -42,8 +44,12 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const sendEmailVarifiacation = () => {
-    sendEmailVarifiacation(auth.currentUser);
+  const emailVarifiacation = () => {
+    sendEmailVerification(auth.currentUser);
+  };
+
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
   };
 
   const logOut = () => {
@@ -93,7 +99,8 @@ const AuthProvider = ({ children }) => {
     logIn,
     logOut,
     createUserWithSocial,
-    sendEmailVarifiacation,
+    emailVarifiacation,
+    resetPassword,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

@@ -99,6 +99,9 @@ const Login = () => {
           <p className="my-2">
             New At Funta Learning? Please <Link to="/register">Register</Link>
           </p>
+          <p className="my-2">
+            Forget Password? Reset <Link to="/reset">Reset Password</Link>
+          </p>
           <div className="mt-2">
             <button
               className="btn btn-outline-primary w-100"

@@ -7,6 +7,7 @@ import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import FAQ from "../Pages/FAQ/FAQ";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import Reset from "../Pages/Login/Reset";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 import Register from "../Pages/Register/Register";
 import PrivetRoute from "./PrivetRoute";
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path: "reset",
+        element: <Reset></Reset>,
       },
       {
         path: "register",
